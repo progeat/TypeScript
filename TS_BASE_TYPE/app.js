@@ -68,15 +68,20 @@ const tuple2 = [
     4,
     5,
 ];
-// Типизация функции enums
+// Типизация функции Enums
+var Roles;
+(function (Roles) {
+    Roles["admin"] = "admin";
+    Roles["user"] = "user";
+})(Roles || (Roles = {}));
 const person1 = {
-    role: 'admin',
+    role: Roles.admin,
 };
 const person2 = {
-    role: 'user',
+    role: Roles.user,
 };
 const check = (person) => {
-    if (person.role === 'admin') {
+    if (person.role === Roles.admin) {
         console.log('user is admin');
     }
     else {
@@ -85,3 +90,29 @@ const check = (person) => {
 };
 check(person1);
 check(person2);
+// Типизация функции Simbol и Bigint
+// не забыть указать в конфигураторе стандарт от es2020
+const a = Symbol('key');
+const b = Symbol('key2');
+console.log(a === b);
+const big1 = 123n;
+const big2 = BigInt(200);
+console.log(big1, big2);
+// Специальный тип void(для пустого вывода из функции) и undefined
+const log = (message) => {
+    console.log(message);
+};
+let temp; // если значение не заданно
+// Типизация функций
+const log2 = (data) => {
+    console.log(data);
+};
+const sum2 = (a, b, callback) => {
+    const result = a + b;
+    callback(result);
+    return result;
+};
+let fn;
+fn = sum2;
+// fn = log2
+fn(1, 2, log2);

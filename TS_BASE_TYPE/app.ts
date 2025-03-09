@@ -96,16 +96,21 @@ const tuple2: [boolean, string, ...number[]] = [
 ];
 
 // Типизация функции Enums
+enum Roles {
+  admin = 'admin',
+  user = 'user',
+}
+
 const person1 = {
-  role: 'admin',
+  role: Roles.admin,
 };
 
 const person2 = {
-  role: 'user',
+  role: Roles.user,
 };
 
-const check = (person: { role: string }) => {
-  if (person.role === 'admin') {
+const check = (person: { role: Roles }) => {
+  if (person.role === Roles.admin) {
     console.log('user is admin');
   } else {
     console.log('user is user');
@@ -114,4 +119,40 @@ const check = (person: { role: string }) => {
 
 check(person1);
 check(person2);
-// досмотреть урок про Enums
+
+// Типизация функции Simbol и Bigint
+// не забыть указать в конфигураторе стандарт от es2020
+const a: symbol = Symbol('key');
+const b: symbol = Symbol('key2');
+
+console.log(a === b);
+
+const big1: bigint = 123n;
+const big2: bigint = BigInt(200);
+
+console.log(big1, big2);
+
+// Специальный тип void(для пустого вывода из функции) и undefined
+const log = (message: string): void => {
+  console.log(message);
+};
+
+let temp: undefined; // если значение не заданно
+
+// Типизация функций
+const log2 = (data: any): void => {
+  console.log(data);
+};
+
+const sum2 = (a: number, b: number, callback: (d: any) => void): number => {
+  const result = a + b;
+  callback(result);
+  return result;
+};
+
+let fn: (n1: number, n2: number, cb: (d: any) => void) => number;
+
+fn = sum2;
+// fn = log2
+
+fn(1, 2, log2);
