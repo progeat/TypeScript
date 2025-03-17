@@ -45,4 +45,95 @@ const convert = (data: object, type: OutputeType) => {
 console.log(convert({ a: 1 }, 'text'));
 
 // Interface(итерфейсы)
-// Пересмотреть видео по интерфейсам
+
+// type User = {            // использовать type рекомендуется для
+//   name: string           // однострочного описания типа
+//   age: number            // для объекта нужно использовать
+//   hobbies: string[]      // интерфес
+// }
+
+// type CallbackFn = (data: string[]) => void // пример правильного испол. type
+
+interface User {
+  name: string;
+  age: number;
+  hobbies: string[];
+}
+
+interface Adress {
+  city: string;
+  street: string;
+}
+
+interface FullUser extends User, Adress {
+  date: Date;
+}
+
+const person2: FullUser = {
+  name: 'Andrey',
+  age: 35,
+  city: 'Moscow',
+  street: 'Perovskaya',
+  hobbies: ['1', '2', '3'],
+  date: new Date(),
+};
+
+interface UserMap {
+  [key: number]: FullUser;
+  date?: Date;
+}
+
+const UserMap = {
+  1: person2,
+  2: person2,
+  3: person2,
+} as UserMap;
+
+UserMap[2].date;
+
+// unknown отложенная типизация
+let a: unknown = 42;
+
+let b = a === 10; // == === || && ? !
+
+//let c = a + 10 // error так как операции с неизвестным типом
+// но с any сработает
+
+if (typeof a === 'number') {
+  let c = a + 10;
+}
+
+// never для функций которые никогда не завершатся
+function throwError(message: string): never {
+  throw new Error(message);
+}
+
+function loop(): never {
+  while (true) {}
+}
+
+function rec(): never {
+  return rec();
+}
+
+// Type Guard cоздание функций на проверку типа
+// не только примитивных значений, но и собственных
+// созданных типов TS
+function isBoolean(val: string | boolean): val is boolean {
+  return typeof val === 'boolean';
+}
+
+function isString(val: string | boolean): val is string {
+  return typeof val === 'string';
+}
+
+function logFlag(flag: string | boolean) {
+  if (isBoolean(flag)) {
+    console.log('Hey this is boolean');
+  } else if (isString(flag)) {
+    console.log('Hey this is string');
+  }
+}
+
+logFlag(true);
+logFlag('test');
