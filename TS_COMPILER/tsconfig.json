@@ -27,10 +27,12 @@
 
     /* Modules */
     "module": "commonjs" /* Specify what module code is generated. */,
-    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    // "rootDir": "./src" /* Specify the root folder within your source files. */,
     // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */
-    // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-    // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,
+    "paths": {
+      "@utils": ["./src/utils/index.js"]
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
@@ -42,7 +44,7 @@
     // "resolvePackageJsonImports": true,                /* Use the package.json 'imports' field when resolving imports. */
     // "customConditions": [],                           /* Conditions to set in addition to the resolver-specific defaults when resolving imports. */
     // "noUncheckedSideEffectImports": true,             /* Check side effect imports. */
-    // "resolveJsonModule": true,                        /* Enable importing .json files. */
+    "resolveJsonModule": true /* Enable importing .json files. */,
     // "allowArbitraryExtensions": true,                 /* Enable importing files with any extension, provided a declaration file is present. */
     // "noResolve": true,                                /* Disallow 'import's, 'require's or '<reference>'s from expanding the number of files TypeScript should add to a project. */
 
@@ -59,7 +61,7 @@
     // "inlineSourceMap": true,                          /* Include sourcemap files inside the emitted JavaScript. */
     // "noEmit": true,                                   /* Disable emitting files from a compilation. */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
-    // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
     // "removeComments": true,                           /* Disable emitting comments. */
     // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
     // "downlevelIteration": true,                       /* Emit more compliant, but verbose and less performant JavaScript for iteration. */
@@ -129,4 +131,38 @@
     "target" --- указывается версия ECMAScript в который нужно скомпелировать .ts файлы
     "lib" --- для подключения пакета поддержки новых сущностей ECMAScript
     "jsx" --- поддержка jsx в файлах
+*/
+/* Modules
+    "module" --- настройка выбора импортов и экспортов(формат)
+    "rootDir" --- указывает на расположение папки с исходным кодом проекта который будет скомпилирован
+    "baseUrl" --- указывает корневую директорию от которой будет расчитывать импорты и экспорты(работает в паре c "
+    paths")
+    "paths" --- прописываем элиасы для проекта
+    "rootDirs" --- перечисляем множество папок с хранением исходного кода проекта(на случай если код разделен)
+    "typeRoots" --- указывает на дополнительные папки с правилами типов проекта
+    "types" ---указывает на файлы типов проекта
+    "resolveJsonModule" --- для импорта json файлов в проект
+*/
+/* JavaScript Support 
+    "allowJs" --- разрешает использование js файлов в проете
+    "checkJs" --- проверяет js файлы на наличие ошибок в типизации
+*/
+/* Emit
+    "outDir" --- указывает путь куда будет скомпелирован проект
+    "removeComments" --- для удаления комментариев при компеляции проекта
+    "noEmit" --- запрещает компелирование проекта, но при этом проверит проект на ошибки
+    "noEmitOnError" --- не компелирует проект если есть ошибки
+    "declaration" --- создает дополнительные файлы в проекте описывающие заявленные типизации в файлах
+    "declarationMap" --- создает карту декларации проекта
+    "emitDeclarationOnly" --- для генерации только декларационных файлов при компиляции
+    "sourceMap" --- создание карты для js файлов проекта
+    "inlineSourceMap" --- создает карту прям в файле
+    "inlineSources" --- создает карту с исходным кодом TS в выходном файле после компеляции(работает вместе с sourceMap)
+*/
+/* Type Checking 
+    "strict" --- включает строгий режим проверки типизации
+    "strictNullChecks" --- отвечает за проверку содержимого null или undefined
+    "strictPropertyInitialization" --- проверка на существование значения в свойстве класса
+    "noUnusedLocals" --- проверка на неиспользованные переменные
+    "noUnusedParameters" --- проверка на неиспользованные параметры функции в теле функции
 */
