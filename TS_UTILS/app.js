@@ -15,6 +15,21 @@ function createAndValidate(name, age) {
 }
 // Readonly
 const user2 = { name: 'Elena', age: 24 };
-user.age = 33;
+// user2.age = 33 // ошибка
 console.log(user2);
-// Required
+const user3 = {
+    id: 1,
+    age: 2,
+    name: 'Igor',
+};
+/* ReturnType Parameters ConstructorParameters */
+function log(data, num) {
+    console.log(data, num);
+    return false;
+}
+class User5 {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
